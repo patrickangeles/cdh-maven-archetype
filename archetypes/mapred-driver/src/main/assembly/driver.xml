@@ -1,0 +1,13 @@
+<assembly>
+  <id>driver</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <scope>runtime</scope>
+      <outputDirectory>lib</outputDirectory>
+    </dependencySet>
+  </dependencySets>
+</assembly>

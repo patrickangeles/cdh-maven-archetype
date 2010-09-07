@@ -1,0 +1,13 @@
+<projectDescription>
+  <name>hbase-driver</name>
+  <comment>Sample Hbase Programs - run with &apos;bin/hadoop jar filename.jar&apos;</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

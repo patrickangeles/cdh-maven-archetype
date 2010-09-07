@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><archetype>
+  <id>mapred-driver</id>
+  <sources>
+    <source>src/main/java/Driver.java</source>
+    <source>src/main/java/OldWordCount.java</source>
+    <source>src/main/java/WordCount.java</source>
+  </sources>
+  <testSources>
+    <source>src/test/java/OldWordCountTest.java</source>
+    <source>src/test/java/WordCountTest.java</source>
+  </testSources>
+  <resources>
+    <resource>src/main/assembly/driver.xml</resource>
+  </resources>
+</archetype>

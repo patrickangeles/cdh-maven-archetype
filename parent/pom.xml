@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cdh-maven</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <name>CDH Maven Parent POM</name>
+
+  <properties>
+    <maven-compiler-plugin.version>2.2</maven-compiler-plugin.version>
+    <maven-jar-plugin.version>2.3</maven-jar-plugin.version>
+    <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>cdh.maven.repo</id>
+      <name>CDH Maven Repo</name>
+      <url>https://cdh-maven-repo.googlecode.com/svn/trunk</url>
+      <!-- Yes, we are using SVN on Googlecode to host the repo -->
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>cdh.maven.repo</id>
+      <name>CDH Maven Repo</name>
+      <url>https://cdh-maven-repo.googlecode.com/svn/trunk</url>
+    </repository>
+  </distributionManagement>
+
+</project>

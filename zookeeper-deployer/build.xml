@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+
+<project name="cdh-zookeeper" default="install" 
+   xmlns:artifact="urn:maven-artifact-ant"
+   xmlns:ac="antlib:net.sf.antcontrib">
+
+  <!-- BASE PROPERTIES -->
+  <property name="lib.dir" value="${basedir}/lib"/>
+
+  <!-- TASKDEFS -->
+  <taskdef uri="antlib:net.sf.antcontrib"
+  	  resource="net/sf/antcontrib/antlib.xml"
+	  classpath="${lib.dir}/ant-contrib-1.0b3.jar" />
+
+  <taskdef uri="urn:maven-artifact-ant"
+  	  resource="org/apache/maven/artifact/ant/antlib.xml"
+	  classpath="${lib.dir}/maven-ant-tasks-2.0.10.jar" />
+
+  <!-- USER PROPERTIES -->
+  <property file="${user.home}/build.properties" />
+  <property file="${basedir}/build.properties" />
+ 
+  <!-- BUILD PROPERTIES -->
+  <property name="Name" value="CDH Zookeeper Maven Publisher"/>
+  <property name="name" value="zookeeper"/>
+  <property name="groupId" value="com.cloudera.zookeeper"/>
+
+  <ac:propertyregex property="patch.level"
+		    input="${cdh.dir}"
+		    regexp="\+([0-9.]*)"
+		    select="\1" />
+
+  <ac:propertyregex property="apache.version"
+		    input="${cdh.dir}"
+		    regexp="${name}-([0-9.]*)"
+		    select="\1" />
+
+  <property name="cdh.version" value="${apache.version}+${patch.level}"/>
+  <property name="mavenized.version" value="${apache.version}-${patch.level}" />
+  
+  <property name="root.build.dir" value="${basedir}/build"/>
+  <property name="build.dir" value="${root.build.dir}/${name}-${mavenized.version}"/>
+  <property name="templates.dir" value="${basedir}/templates"/>
+  <property name="jars.dir" value="${build.dir}/jars" />
+  <property name="poms.dir" value="${build.dir}/poms"/>
+  <property name="source-jars.dir" value="${build.dir}/source-jars"/>
+
+  <!-- REPOSITORY PROPERTIES -->
+  <property name="repository.id" value="cloudera.staging.repo"/>
+  <property name="repository.url" value="https://repository.cloudera.com/staging"/> 
+
+  <!-- BASE TARGETS ============================ -->
+
+  <target name="clean" >
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="clean-all" >
+    <delete dir="${root.build.dir}"/>
+  </target>
+
+  <target name="init">
+    <fail message="Missing 'cdh.dir' property." unless="cdh.dir" />
+    <echo>CDH Location      : ${cdh.dir}</echo>
+    <echo>Apache Version    : ${apache.version}</echo>
+    <echo>Patch Level       : ${patch.level}</echo>
+    <echo>CDH Version       : ${cdh.version}</echo>
+    <echo>Maven Group ID    : ${groupId}</echo>
+    <echo>Mavenized Version : ${mavenized.version}</echo>
+
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${jars.dir}"/>
+    <mkdir dir="${poms.dir}"/>
+    <mkdir dir="${source-jars.dir}"/>
+  </target>
+
+  <target name="jar-sources" depends="init">
+    <property name="src.dir" value="${cdh.dir}/src/java/main"/>  	
+    <property name="src.generated.dir" value="${cdh.dir}/src/java/generated"/>
+
+    <jar jarfile="${source-jars.dir}/zookeeper.jar">
+      <fileset dir="${src.dir}" />
+      <fileset dir="${src.generated.dir}" />
+    </jar>
+  </target>
+
+  <target name="copy-poms" depends="init">
+    <copy todir="${poms.dir}">
+      <globmapper from="*-pom-template.xml" to="*.pom" />
+      <fileset dir="${templates.dir}"/>
+      <filterset>
+	<filter token="VERSION" value="${mavenized.version}"/>
+	<filter token="GROUP_ID" value="${groupId}"/>
+      </filterset>
+    </copy>
+  </target>
+
+  <target name="copy-jars" depends="init">
+    <ac:foreach target="copy-jar" param="filename">
+      <path>
+	<fileset dir="${cdh.dir}" casesensitive="yes">
+	  <!--
+	  <include name="**/${name}-${cdh.version}-*.jar" />
+	  -->
+	  <include name="**/${name}-${cdh.version}.jar" />
+	</fileset>
+      </path>
+    </ac:foreach>
+  </target>
+
+  <target name="copy-jar">
+    <!--
+    <ac:propertyregex property="subproject-name"
+                      input="${filename}"
+		      regexp="[0-9]-(.*)\.jar"
+		      select="\1"
+		      override="true" />
+    <property name="artifact-name" value="${name}-${subproject-name}" />
+    -->
+    <property name="artifact-name" value="${name}" />
+
+    <echo>Found ${artifact-name} from ${filename}</echo>
+    <copy file="${filename}" tofile="${jars.dir}/${artifact-name}.jar" />
+  </target>
+
+  <!-- INSTALL TARGETS ============================ -->
+
+  <target name="install" depends="jar-sources,copy-jars,copy-poms,init"
+     description="To install hadoop core and test jars to local filesystem's m2 cache">
+      <ac:foreach target="install-jar" param="filename">
+	<path>
+	  <fileset dir="${poms.dir}" casesensitive="yes" />
+	</path>
+      </ac:foreach>
+  </target>
+
+  <target name="install-jar">
+    <!--
+    <ac:propertyregex property="subproject-name"
+                      input="${filename}"
+		      regexp="${poms.dir}/${name}-(.*)\.pom"
+		      select="\1"
+		      override="true" />
+    <property name="artifact-name" value="${name}-${subproject-name}" />
+    -->
+    <property name="artifact-name" value="${name}" />
+    
+    <echo>Installing ${artifact-name}</echo>
+
+    <property name="jarfile" value="${jars.dir}/${artifact-name}.jar" />
+    <property name="source-jarfile" value="${source-jars.dir}/${artifact-name}.jar" />
+    <available property="has-source-jar" file="${source-jarfile}" /> 
+
+    <antcall target="install-jar-with-source" />
+    <antcall target="install-jar-no-source" />
+  </target>
+
+  <target name="install-jar-with-source" if="has-source-jar">
+    <artifact:pom file="${filename}" id="${artifact-name}.pom"/>
+    <artifact:install file="${jarfile}">
+      <pom refid="${artifact-name}.pom"/>
+      <attach file="${source-jarfile}" classifier="sources"/>
+    </artifact:install>
+  </target>
+
+  <target name="install-jar-no-source" unless="has-source-jar">
+    <artifact:pom file="${filename}" id="${artifact-name}.pom"/>
+    <artifact:install file="${jarfile}">
+      <pom refid="${artifact-name}.pom"/>
+    </artifact:install>
+  </target>
+
+  <!-- DEPLOY TARGETS ============================ -->
+
+  <target name="deploy" depends="jar-sources,copy-jars,copy-poms,init"
+     description="Deploy artifacts to a maven repository">
+      <ac:foreach target="deploy-jar" param="filename">
+	<path>
+	  <fileset dir="${poms.dir}" casesensitive="yes" />
+	</path>
+      </ac:foreach>
+  </target>
+
+  <target name="deploy-jar">
+    <!--
+    <ac:propertyregex property="subproject-name"
+                      input="${filename}"
+		      regexp="${poms.dir}/${name}-(.*)\.pom"
+		      select="\1"
+		      override="true" />
+    <property name="artifact-name" value="${name}-${subproject-name}" />
+    -->
+    <property name="artifact-name" value="${name}" />
+
+    <echo>Deploying ${artifact-name}</echo>
+
+    <property name="jarfile" value="${jars.dir}/${artifact-name}.jar" />
+    <property name="source-jarfile" value="${source-jars.dir}/${artifact-name}.jar" />
+    <available property="has-source-jar" file="${source-jarfile}" /> 
+
+    <antcall target="deploy-jar-with-source" />
+    <antcall target="deploy-jar-no-source" />
+  </target>
+
+  <target name="deploy-jar-with-source" if="has-source-jar">
+    <artifact:pom file="${filename}" id="${artifact-name}.pom"/>
+    <artifact:deploy file="${jarfile}">
+      <remoteRepository id="${repository.id}" url="${repository.url}"/>
+      <pom refid="${artifact-name}.pom"/>
+      <attach file="${source-jarfile}" classifier="sources"/>
+    </artifact:deploy>
+  </target>
+
+  <target name="deploy-jar-no-source" unless="has-source-jar">
+    <artifact:pom file="${filename}" id="${artifact-name}.pom"/>
+    <artifact:deploy file="${jarfile}">
+      <remoteRepository id="${repository.id}" url="${repository.url}"/>
+      <pom refid="${artifact-name}.pom"/>
+    </artifact:deploy>
+  </target>
+
+</project>
