@@ -22,7 +22,7 @@
     <hadoop.releases.repo>https://cdh-maven-repo.googlecode.com/svn/trunk</hadoop.releases.repo>
     <hadoop.snapshots.repo>https://cdh-maven-repo.googlecode.com/svn/trunk</hadoop.snapshots.repo>
     <hadoop.groupId>com.cloudera.hadoop</hadoop.groupId>
-    <hadoop.version>0.20.2-CDH.228</hadoop.version>
+    <hadoop.version>0.20.2-737</hadoop.version>
 
     <junit.version>4.8.1</junit.version>
 

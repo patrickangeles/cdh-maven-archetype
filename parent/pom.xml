@@ -17,6 +17,28 @@
 
   <repositories>
     <repository>
+      <id>cloudera.releases.repo</id>
+      <name>Cloudera Releases Repo</name>
+      <url>https://repository.cloudera.com/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>cloudera.snapshots.repo</id>
+      <name>Cloudera Snapshots Repo</name>
+      <url>https://repository.cloudera.com/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
       <id>cdh.maven.repo</id>
       <name>CDH Maven Repo</name>
       <url>https://cdh-maven-repo.googlecode.com/svn/trunk</url>
