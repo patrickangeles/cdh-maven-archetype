@@ -5,7 +5,6 @@
     <groupId>cdh-maven</groupId>
     <artifactId>parent</artifactId>
     <version>1.0.0</version>
-    <relativePath>../parent</relativePath>
   </parent>
 
   <groupId>cdh-maven</groupId>
