@@ -10,6 +10,11 @@ if [ "$ARCHETYPE" == "" ] ; then
   exit 1
 fi
 
+if [ ! -e ${ARCHETYPE}/pom.xml ] ; then
+  echo "${ARCHETYPE} is not a maven project directory"
+  exit 1
+fi
+
 cd $ARCHETYPE
 mvn clean
 mvn eclipse:clean
