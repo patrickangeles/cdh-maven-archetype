@@ -5,6 +5,11 @@
 
 ARCHETYPE=$1
 
+if [ "$ARCHETYPE" == "" ] ; then
+  echo "Usage: create-install.sh <path-to-archetype-project>"
+  exit 1
+fi
+
 cd $ARCHETYPE
 mvn clean
 mvn eclipse:clean

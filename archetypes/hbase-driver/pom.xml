@@ -17,12 +17,12 @@
   <description>Sample Hbase Programs - run with 'bin/hadoop jar filename.jar'</description>
 
   <properties>
+    <jdkLevel>1.6</jdkLevel>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
-    <hadoop.releases.repo>https://cdh-maven-repo.googlecode.com/svn/trunk</hadoop.releases.repo>
-    <hadoop.snapshots.repo>https://cdh-maven-repo.googlecode.com/svn/trunk</hadoop.snapshots.repo>
-    <hadoop.version>0.20.1-CDH.169.68</hadoop.version>
-    <hbase.version>0.20.3-CDH.0</hbase.version>
+    <hadoop.version>0.20.2-cdh3u0</hadoop.version>
+    <hbase.version>0.90.1-cdh3u0</hbase.version>
     
     <junit.version>4.8.1</junit.version>
 
@@ -88,8 +88,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>${jdkLevel}</source>
+          <target>${jdkLevel}</target>
         </configuration>
       </plugin>
 

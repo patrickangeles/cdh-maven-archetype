@@ -15,8 +15,12 @@
   <name>CDH Maven Archetype Parent</name>
 
   <properties>
+    <jdkLevel>1.6</jdkLevel>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <maven-archetype-plugin.version>2.0-alpha-4</maven-archetype-plugin.version>
+    <hadoop.releases.repo>https://repository.cloudera.com/content/repositories/releases/</hadoop.releases.repo>
+    <hadoop.snapshots.repo>https://repository.cloudera.com/content/repositories/snapshots/</hadoop.snapshots.repo>
   </properties>
 
   <build>

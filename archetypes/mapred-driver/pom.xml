@@ -17,13 +17,14 @@
   <description>Sample MapReduce Driver - run with 'bin/hadoop jar filename.jar'</description>
 
   <properties>
+    <jdkLevel>1.6</jdkLevel>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
-    <hadoop.releases.repo>https://cdh-maven-repo.googlecode.com/svn/trunk</hadoop.releases.repo>
-    <hadoop.snapshots.repo>https://cdh-maven-repo.googlecode.com/svn/trunk</hadoop.snapshots.repo>
-    <hadoop.groupId>com.cloudera.hadoop</hadoop.groupId>
-    <hadoop.version>0.20.2-737</hadoop.version>
+    <hadoop.releases.repo>https://repository.cloudera.com/content/repositories/releases/</hadoop.releases.repo>
+    <hadoop.snapshots.repo>https://repository.cloudera.com/content/repositories/snapshots/</hadoop.snapshots.repo>
 
+    <hadoop.version>0.20.2-cdh3u0</hadoop.version>
     <junit.version>4.8.1</junit.version>
 
     <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
@@ -58,19 +59,19 @@
 
   <dependencies>
     <dependency>
-      <groupId>${hadoop.groupId}</groupId>
+      <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-core</artifactId>
       <version>${hadoop.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>${hadoop.groupId}</groupId>
+      <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-examples</artifactId>
       <version>${hadoop.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>${hadoop.groupId}</groupId>
+      <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-mrunit</artifactId>
       <version>${hadoop.version}</version>
       <scope>test</scope>
@@ -87,9 +88,10 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+	<version>${maven-compiler-plugin.version}</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>${jdkLevel}</source>
+          <target>${jdkLevel}</target>
         </configuration>
       </plugin>
 

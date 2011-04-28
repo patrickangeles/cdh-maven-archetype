@@ -1,4 +1,4 @@
-package com.cloudera.hadoop;
+package thiswillbereplaced;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -26,7 +26,6 @@ import org.apache.hadoop.util.GenericOptionsParser;
  * 
  * Version for org.apache.hadoop.mapred.* API.
  */
-@SuppressWarnings( { "deprecation" })
 public class OldWordCount {
 
   public static class Map extends MapReduceBase implements

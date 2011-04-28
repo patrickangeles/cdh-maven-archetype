@@ -1,4 +1,4 @@
-package com.cloudera.hadoop;
+package thiswillbereplaced;
 
 import java.io.IOException;
 import java.util.StringTokenizer;

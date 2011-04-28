@@ -1,9 +1,10 @@
-package com.cloudera.hadoop;
+package thiswillbereplaced;
 
 import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.TestCase;
+
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -15,6 +16,9 @@ import org.apache.hadoop.mrunit.mapreduce.MapReduceDriver;
 import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.Before;
 import org.junit.Test;
+
+import thiswillbereplaced.WordCount;
+
 
 public class WordCountTest extends TestCase {
   private MapDriver<LongWritable, Text, Text, IntWritable> mapDriver;

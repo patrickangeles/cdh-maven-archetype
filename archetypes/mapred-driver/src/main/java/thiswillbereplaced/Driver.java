@@ -1,4 +1,4 @@
-package com.cloudera.hadoop;
+package thiswillbereplaced;
 
 import org.apache.hadoop.util.ProgramDriver;
 
