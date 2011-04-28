@@ -10,6 +10,10 @@
   <name>CDH Maven Parent POM</name>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+
+    <maven-archetype-plugin.version>2.0-alpha-4</maven-archetype-plugin.version>
     <maven-compiler-plugin.version>2.2</maven-compiler-plugin.version>
     <maven-jar-plugin.version>2.3</maven-jar-plugin.version>
     <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
@@ -60,4 +64,17 @@
     </repository>
   </distributionManagement>
 
+  <build>
+    <pluginManagement>
+      <plugins>
+	<plugin>
+	  <artifactId>maven-archetype-plugin</artifactId>
+	  <version>${maven-archetype-plugin.version}</version>
+	  <configuration>
+	    <keepParent>false</keepParent>
+	  </configuration>
+	</plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
