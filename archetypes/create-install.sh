@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script to create and install (in local repo) a mvn archetype from an existing project.
+# Script to create and install (in the local .m2 repo) a mvn archetype from an existing project.
 #
 
 ARCHETYPE=$1

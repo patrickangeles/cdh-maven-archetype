@@ -59,6 +59,6 @@ $
 
  $ mvn eclipse:eclipse -DdownloadSources
 
- Then, in Eclipse, go: Import... > Existing Projects... > select the 'foobar' directory (or parent thereof) > done! The nice thing about using Maven here is that it links the sources for you.
+ Then, in Eclipse, go: Import... > Existing Projects... > select the 'foo' directory (or parent thereof) > done! The nice thing about using Maven here is that it links the sources for you.
 
 
