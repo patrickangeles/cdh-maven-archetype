@@ -5,46 +5,43 @@ Did some twiddling around with Maven archetypes and catalogs. You can now create
 
 Here's how you do it (you'll need a recent if not latest version of Maven installed):
 
-$ mvn archetype:generate -DarchetypeCatalog=http://repository.cloudera.com
+$ mvn archetype:generate -DarchetypeCatalog=http://cdh-maven-repo.googlecode.com/svn/trunk/archetype-catalog.xml
 [INFO] Scanning for projects...
-[INFO] Searching repository for plugin with prefix: 'archetype'.
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building Maven Default Project
-[INFO]    task-segment: [archetype:generate] (aggregator-style)
+[INFO] Building Maven Stub Project (No POM) 1
 [INFO] ------------------------------------------------------------------------
-[INFO] Preparing archetype:generate
-[INFO] No goals needed for project - skipping
-[INFO] Setting property: classpath.resource.loader.class => 'org.codehaus.plexus.velocity.ContextClassLoaderResourceLoader'.
-[INFO] Setting property: velocimacro.messages.on => 'false'.
-[INFO] Setting property: resource.loader => 'classpath'.
-[INFO] Setting property: resource.manager.logwhenfound => 'false'.
-[INFO] [archetype:generate {execution: default-cli}]
+[INFO] 
+[INFO] >>> maven-archetype-plugin:2.0:generate (default-cli) @ standalone-pom >>>
+[INFO] 
+[INFO] <<< maven-archetype-plugin:2.0:generate (default-cli) @ standalone-pom <<<
+[INFO] 
+[INFO] --- maven-archetype-plugin:2.0:generate (default-cli) @ standalone-pom ---
 [INFO] Generating project in Interactive mode
 [INFO] No archetype defined. Using maven-archetype-quickstart (org.apache.maven.archetypes:maven-archetype-quickstart:1.0)
 Choose archetype:
-1: http://repository.cloudera.com -> mapred-driver-archetype (mapred-driver-archetype)
-Choose a number:  (1): 1
-Define value for groupId: : com.adfasdf
-Define value for artifactId: : foobar
-Define value for version:  1.0-SNAPSHOT: : <enter>
-Define value for package:  com.adfasdf: : <enter>
+1: http://cdh-maven-repo.googlecode.com/svn/trunk/archetype-catalog.xml -> mapred-driver-archetype (mapred-driver-archetype)
+Choose a number: : 1
+Define value for property 'groupId': : foo
+Define value for property 'artifactId': : foo
+Define value for property 'version':  1.0-SNAPSHOT: : <enter>
+Define value for property 'package':  foo: : <enter>
 Confirm properties configuration:
-groupId: com.adfasdf
-artifactId: foobar
+groupId: foo
+artifactId: foo
 version: 1.0-SNAPSHOT
-package: com.adfasdf
+package: foo
  Y: : <enter>
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 28,column 12] : ${hadoop.releases.repo} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 38,column 12] : ${hadoop.snapshots.repo} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 51,column 16] : ${hadoop.version} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 57,column 16] : ${hadoop.version} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 63,column 16] : ${hadoop.version} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 69,column 16] : ${junit.version} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 90,column 18] : ${maven-assembly-plugin.version} is not a valid reference.
- [WARNING] org.apache.velocity.runtime.exception.ReferenceException: reference : template = archetype-resources/pom.xml [line 100,column 29] : ${basedir} is not a valid reference.
  [INFO] ------------------------------------------------------------------------
- [INFO] BUILD SUCCESSFUL
+ [INFO] BUILD SUCCESS
  [INFO] ------------------------------------------------------------------------
+ [INFO] Total time: 10.501s
+ [INFO] Finished at: Wed Apr 27 22:20:16 EDT 2011
+ [INFO] Final Memory: 7M/81M
+ [INFO] ------------------------------------------------------------------------
+$ 
+
+
 
  Now you've got a maven-based Hadoop project! (Ignore the velocity ReferenceExceptions... those are normal.)
 
