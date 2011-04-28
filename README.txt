@@ -1,9 +1,6 @@
--- TODO: Edit this README --
+You can create a template hadoop executable jar that has a Driver with two MapReduce jobs: wordcount based on the org.apache.hadoop.mapred API, and the same wordcount based on the org.apache.hadoop.mapreduce API.
 
-
-Did some twiddling around with Maven archetypes and catalogs. You can now create a template hadoop executable jar that has a Driver with two MapReduce jobs: wordcount based on the old *.mapred.* API, and the same wordcount based on the new *.mapreduce.* API.
-
-Here's how you do it (you'll need a recent if not latest version of Maven installed):
+Here's how you do it (you'll need a recent version of Maven installed):
 
 $ mvn archetype:generate -DarchetypeCatalog=http://cdh-maven-repo.googlecode.com/svn/trunk/archetype-catalog.xml
 [INFO] Scanning for projects...
@@ -39,15 +36,13 @@ package: foo
  [INFO] Finished at: Wed Apr 27 22:20:16 EDT 2011
  [INFO] Final Memory: 7M/81M
  [INFO] ------------------------------------------------------------------------
-$ 
 
 
-
- Now you've got a maven-based Hadoop project! (Ignore the velocity ReferenceExceptions... those are normal.)
+ Now you've got a maven-based Hadoop project!
 
  To build and run in Hadoop:
 
- $ cd foobar
+ $ cd foo
  $ mvn package
  $ hadoop jar target/foobar-1.0-SNAPSHOT-driver.jar
 
