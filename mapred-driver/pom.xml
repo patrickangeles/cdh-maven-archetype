@@ -3,14 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>cdh-maven</groupId>
-    <artifactId>archetype-parent</artifactId>
+    <artifactId>parent</artifactId>
     <version>1.0.0</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <groupId>cdh-maven</groupId>
   <artifactId>mapred-driver</artifactId>
-  <version>1.0-alpha-1</version>
   <packaging>jar</packaging>
 
   <name>MapReduce Driver</name>
