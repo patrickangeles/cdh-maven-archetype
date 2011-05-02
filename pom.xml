@@ -21,6 +21,7 @@
     <maven-compiler-plugin.version>2.2</maven-compiler-plugin.version>
     <maven-jar-plugin.version>2.3</maven-jar-plugin.version>
     <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
+    <maven-license-plugin.version>1.9.0</maven-license-plugin.version>
   </properties>
 
   <repositories>
@@ -80,5 +81,20 @@
 	</plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+	<groupId>com.mycila.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+	<version>${maven-license-plugin.version}</version>
+        <configuration>
+          <header>LICENSE.txt</header>
+          <aggregate>true</aggregate>
+	  <excludes>
+	    <exclude>**/*.txt</exclude>
+	  </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
