@@ -56,25 +56,25 @@ Here's how you do it (you'll need a recent version of Maven installed)::
   [INFO] Finished at: Wed Apr 27 22:20:16 EDT 2011
   [INFO] Final Memory: 7M/81M
   [INFO] ------------------------------------------------------------------------
- 
+
 
 Now you've got a Maven-based Hadoop MapReduce project that links to CDH3 artifacts.
 
 Building and running
 --------------------
-
+::
  $ cd foo
  $ mvn package
  $ hadoop jar target/foo-1.0-SNAPSHOT-driver.jar
 
 Running unit tests
 ------------------
-
+::
  $ mvn test
 
 Importing your project in Eclipse
 ---------------------------------
-
+::
  $ mvn eclipse:eclipse -DdownloadSources
 
 Then, in Eclipse, go: Import... > Existing Projects... > select the 'foo' directory (or parent thereof) > done!
