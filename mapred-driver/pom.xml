@@ -11,7 +11,7 @@
   <packaging>jar</packaging>
 
   <name>MapReduce Driver</name>
-  <description>Sample MapReduce Driver - run with 'bin/hadoop jar filename.jar'</description>
+  <description>Sample MapReduce Driver - run with 'bin/hadoop jar project-1.0-SNAPSHOT-driver.jar'</description>
 
   <properties>
     <jdkLevel>1.6</jdkLevel>

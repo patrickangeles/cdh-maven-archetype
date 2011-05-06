@@ -58,9 +58,9 @@ Here's how you do it (you'll need a recent version of Maven installed)::
   [INFO] ------------------------------------------------------------------------
  
 
-Now you've got a maven-based Hadoop project!
+Now you've got a Maven-based Hadoop MapReduce project that links to CDH3 artifacts.
 
-To build and run in Hadoop (requires Apache Hadoop installation)::
+To build and run::
 
  $ cd foo
  $ mvn package
@@ -70,7 +70,8 @@ To run the unit tests::
 
  $ mvn test
 
-To import the project in Eclipse::
+Importing your project in Eclipse
+---------------------------------
 
  $ mvn eclipse:eclipse -DdownloadSources
 
