@@ -7,13 +7,11 @@ maven-archetype-plugin to produce an archetype.
 
 Archetypes are published to Cloudera's Maven repository at
 
- https://repository.cloudera.com/content/repositories/releases/
-
-for releases, and 
-
- https://repository.cloudera.com/content/repositories/snapshots/
-
-for SNAPSHOTs.
+========== ===============================================================
+RELEASES   https://repository.cloudera.com/content/repositories/releases/
+---------- ---------------------------------------------------------------
+SNAPSHOTS  https://repository.cloudera.com/content/repositories/snapshots/
+========== ===============================================================
 
 MapReduce in < 100 Keystrokes
 =============================
@@ -62,20 +60,26 @@ Now you've got a Maven-based Hadoop MapReduce project that links to CDH3 artifac
 
 Building and running
 --------------------
+
 ::
- $ cd foo
- $ mvn package
- $ hadoop jar target/foo-1.0-SNAPSHOT-driver.jar
+
+  $ cd foo
+  $ mvn package
+  $ hadoop jar target/foo-1.0-SNAPSHOT-driver.jar
 
 Running unit tests
 ------------------
+
 ::
- $ mvn test
+
+  $ mvn test
 
 Importing your project in Eclipse
 ---------------------------------
+
 ::
- $ mvn eclipse:eclipse -DdownloadSources
+
+  $ mvn eclipse:eclipse -DdownloadSources
 
 Then, in Eclipse, go: Import... > Existing Projects... > select the 'foo' directory (or parent thereof) > done!
 The nice thing about using Maven here is that it links the sources for you.
