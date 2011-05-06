@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-catalog>
+  <archetypes>
+    <archetype>
+      <groupId>com.cloudera.maven.archetype</groupId>
+      <artifactId>mapred-driver-archetype</artifactId>
+      <version>1.0</version>
+      <repository>http://repository.cloudera.com/content/repositories/releases</repository>
+      <description>mapred-driver-archetype</description>
+    </archetype>
+  </archetypes>
+</archetype-catalog>
+

@@ -22,7 +22,7 @@ You can create a template MapReduce executable jar using the ``mapred-driver-arc
 
 Here's how you do it (you'll need a recent version of Maven installed)::
 
- $ mvn archetype:generate -DarchetypeCatalog=http://cdh-maven-repo.googlecode.com/svn/trunk/archetype-catalog.xml
+ $ mvn archetype:generate -DarchetypeCatalog=http://repository.cloudera.com/archetype-catalog.xml
  [INFO] Scanning for projects...
  [INFO]                                                                         
  [INFO] ------------------------------------------------------------------------
@@ -37,7 +37,7 @@ Here's how you do it (you'll need a recent version of Maven installed)::
  [INFO] Generating project in Interactive mode
  [INFO] No archetype defined. Using maven-archetype-quickstart (org.apache.maven.archetypes:maven-archetype-quickstart:1.0)
  Choose archetype:
- 1: http://cdh-maven-repo.googlecode.com/svn/trunk/archetype-catalog.xml -> mapred-driver-archetype (mapred-driver-archetype)
+ 1: http://repository.cloudera.com/archetype-catalog.xml -> mapred-driver-archetype (mapred-driver-archetype)
  Choose a number: : 1
  Define value for property 'groupId': : foo
  Define value for property 'artifactId': : foo
@@ -60,13 +60,15 @@ Here's how you do it (you'll need a recent version of Maven installed)::
 
 Now you've got a Maven-based Hadoop MapReduce project that links to CDH3 artifacts.
 
-To build and run::
+Building and running
+--------------------
 
  $ cd foo
  $ mvn package
  $ hadoop jar target/foo-1.0-SNAPSHOT-driver.jar
 
-To run the unit tests::
+Running unit tests
+------------------
 
  $ mvn test
 
