@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cloudera.maven.archetype</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>hive-udf</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Hive UDF</name>
+  <description>Sample Hive UDF</description>
+
+  <properties>
+    <jdkLevel>1.6</jdkLevel>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+
+    <hadoop.releases.repo>https://repository.cloudera.com/content/repositories/releases/</hadoop.releases.repo>
+    <hadoop.snapshots.repo>https://repository.cloudera.com/content/repositories/snapshots/</hadoop.snapshots.repo>
+
+    <hadoop.version>0.20.2-cdh3u0</hadoop.version>
+    <hive.version>0.7.0-cdh3u0</hive.version>
+    <junit.version>4.8.1</junit.version>
+
+    <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
+    <maven-compiler-plugin.version>2.2</maven-compiler-plugin.version>
+    <maven-jar-plugin.version>2.3</maven-jar-plugin.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>hadoop.releases.repo</id>
+      <name>Releases Repo</name>
+      <url>${hadoop.releases.repo}</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>hadoop.snapshots.repo</id>
+      <name>Snapshots Repo</name>
+      <url>${hadoop.snapshots.repo}</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-core</artifactId>
+      <version>${hadoop.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop.hive</groupId>
+      <artifactId>hive-common</artifactId>
+      <version>${hive.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop.hive</groupId>
+      <artifactId>hive-exec</artifactId>
+      <version>${hive.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+	<version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>${jdkLevel}</source>
+          <target>${jdkLevel}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
