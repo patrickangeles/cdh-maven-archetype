@@ -8,6 +8,13 @@
       <repository>http://repository.cloudera.com/content/repositories/releases</repository>
       <description>mapred-driver-archetype</description>
     </archetype>
+    <archetype>
+      <groupId>com.cloudera.maven.archetype</groupId>
+      <artifactId>hive-udf-archetype</artifactId>
+      <version>1.0</version>
+      <repository>http://repository.cloudera.com/content/repositories/releases</repository>
+      <description>hive-udf-archetype</description>
+    </archetype>
   </archetypes>
 </archetype-catalog>
 

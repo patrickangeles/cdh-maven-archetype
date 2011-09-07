@@ -8,6 +8,7 @@
   </parent>
 
   <artifactId>mapred-driver</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>MapReduce Driver</name>
@@ -21,7 +22,7 @@
     <hadoop.releases.repo>https://repository.cloudera.com/content/repositories/releases/</hadoop.releases.repo>
     <hadoop.snapshots.repo>https://repository.cloudera.com/content/repositories/snapshots/</hadoop.snapshots.repo>
 
-    <hadoop.version>0.20.2-cdh3u0</hadoop.version>
+    <hadoop.version>0.20.2-cdh3u1</hadoop.version>
     <junit.version>4.8.1</junit.version>
 
     <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
